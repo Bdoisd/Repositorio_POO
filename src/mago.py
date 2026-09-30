@@ -7,20 +7,43 @@ class Mago(Personagem):
             nome=nome,
             vida=80,
             ataque=30,
-            defesa=5
+            defesa=5,
+            Poder_magico=70,
         )
 
         self.mana = 100
 
     def atacar(self, alvo):
-        # TODO: implementar ataque normal
-        pass
+        dano = self.ataque - alvo.defesa
+        if dano > 0:
+            alvo.vida -= dano
+            print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano!")
+        else:
+            print(f"{self.nome} atacou {alvo.nome}, mas não causou dano.")
 
-    def usar_magia(self, alvo):
-        # TODO: implementar magia
-
-        if self.mana <= 0:
-            print("O mago não possui mana suficiente.")
-            return
-
-        pass
+    def usar_magia(self, magia, alvo):
+            if self.mana >= magia.custo:
+                self.mana -= magia.custo
+                dano = magia.dano - alvo.defesa
+                if dano > 0:
+                    alvo.vida -= dano
+                    print(f"{self.nome} usou magia em {alvo.nome} causando {dano} de dano!")
+                else:
+                    print(f"{self.nome} usou magia em {alvo.nome}, mas não causou dano.")
+            else:
+                print("O mago não possui mana suficiente.")
+class Magia:
+    def __init__(self, nome, dano, custo):
+        self.nome = nome
+        self.dano = dano
+        self.custo = custo
+class Fogo(Magia):
+    def __init__(self):
+        super().__init__(nome="Fogo", dano=30, custo=20)
+class Gelo(Magia):
+    def __init__(self):
+        super().__init__(nome="Gelo", dano=20, custo=15)
+class Raio(Magia):
+    def __init__(self): 
+        super().__init__(nome="Raio", dano=40, custo=25)
+    
