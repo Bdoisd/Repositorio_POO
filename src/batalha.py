@@ -28,7 +28,7 @@ class Batalha:
                 pass
 
             elif opcao == "2":
-                # TODO: implementar item
+                # TODO: jogador usa item
                 pass
 
             elif opcao == "3":
