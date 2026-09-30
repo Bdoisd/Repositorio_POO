@@ -1,3 +1,4 @@
+from item import Poção_Mana
 from personagem import Personagem
 
 class Mago(Personagem):
@@ -32,6 +33,26 @@ class Mago(Personagem):
                     print(f"{self.nome} usou magia em {alvo.nome}, mas não causou dano.")
             else:
                 print("O mago não possui mana suficiente.")
+class Inventario:
+    def __init__(self):
+        self.itens = [Poção_Mana()]  # Inicializa com 4 poções
+
+    def adicionar_item(self, item):
+        self.itens.append(item)
+
+    def remover_item(self, item):
+        if item in self.itens:
+            self.itens.remove(item)
+        else:
+            print("Item não encontrado no inventário.")
+
+    def mostrar_inventario(self):
+        if not self.itens:
+            print("O inventário está vazio.")
+        else:
+            print("Itens no inventário:")
+            for item in self.itens:
+                print(f"- {item.nome} (Valor: {item.valor})")
 class Magia:
     def __init__(self, nome, dano, custo):
         self.nome = nome
