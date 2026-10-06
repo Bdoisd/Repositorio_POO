@@ -12,5 +12,33 @@ class Inimigo(Personagem):
         )
 
     def atacar(self, alvo):
-        # TODO: implementar ataque
-        pass
+        dano = self.ataque - alvo.defesa
+        if dano > 0:
+            alvo.vida -= dano
+            print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano!")
+        else:
+            print(f"{self.nome} atacou {alvo.nome}, mas não causou dano.")
+class Goblin(Inimigo):
+    def __init__(self):
+        super().__init__(
+            nome="Goblin",
+            vida=50,
+            ataque=15,
+            defesa=5
+        )
+class Orc(Inimigo):
+    def __init__(self):
+        super().__init__(
+            nome="Orc",
+            vida=80,
+            ataque=25,
+            defesa=20
+        )
+class MagoInimigo(Inimigo):
+    def __init__(self):
+        super().__init__(
+            nome="Mago Inimigo",
+            vida=60,
+            ataque=20,
+            defesa=10
+        )
