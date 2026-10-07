@@ -14,23 +14,7 @@ def main():
         jogador = Guerreiro("Arthur")
     elif escolha == "2":
         jogador = Mago("Merlin")
-        print("Escolha a magia:")
-        print("1 - Fogo")
-        print("2 - Gelo")
-        print("3 - Raio")
-        escolha_magia = input("Digite o número da magia: ")
 
-        if escolha_magia == "1":
-            magia = Fogo()
-        elif escolha_magia == "2":
-            magia = Gelo()
-        elif escolha_magia == "3":
-            magia = Raio()
-        else:
-            print("Opção inválida.")
-            return
-
-        jogador.magia = magia
     else:
         print("Opção inválida.")
         return
