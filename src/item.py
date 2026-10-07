@@ -30,3 +30,30 @@ class Potion(Item):
             print(f"{personagem.nome} usou {self.nome} e recuperou 20 de vida!")
         else:
             print(f"{self.nome} não tem mais quantidade disponível.")
+class Inventario:
+    def __init__(self):
+        self.itens = []
+
+    def adicionar_item(self, item):
+        self.itens.append(item)
+
+    def remover_item(self, item):
+        if item in self.itens:
+            self.itens.remove(item)
+        else:
+            print("Item não encontrado no inventário.")
+
+    def usar_item(self, item, personagem):
+        if item in self.itens:
+            item.usar(personagem)
+            self.remover_item(item)
+        else:
+            print("Item não encontrado no inventário.")
+
+    def mostrar_inventario(self):
+        if not self.itens:
+            print("O inventário está vazio.")
+        else:
+            print("Itens no inventário:")
+            for item in self.itens:
+                print(f"- {item.nome} (Valor: {item.valor})")
