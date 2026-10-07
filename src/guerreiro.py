@@ -14,7 +14,7 @@ class Guerreiro(Personagem):
     def atacar(self, inimigo):
         dano = self.ataque - inimigo.defesa
         if dano > 0:
-            inimigo.vida -= dano
+            inimigo.receber_dano(dano)
             print(f"{self.nome} atacou {inimigo.nome} causando {dano} de dano!")
         else:
             print(f"{self.nome} atacou {inimigo.nome}, mas não causou dano.")
