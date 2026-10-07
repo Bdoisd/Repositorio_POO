@@ -8,7 +8,7 @@ class Mago(Personagem):
             vida=80,
             ataque=30,
             defesa=5,
-            Poder_magico=70,
+            
         )
 
         self.mana = 100
@@ -16,7 +16,7 @@ class Mago(Personagem):
     def atacar(self, alvo):
         dano = self.ataque - alvo.defesa
         if dano > 0:
-            alvo.vida -= dano
+            alvo.receber_dano(dano)
             print(f"{self.nome} atacou {alvo.nome} causando {dano} de dano!")
         else:
             print(f"{self.nome} atacou {alvo.nome}, mas não causou dano.")
@@ -26,7 +26,7 @@ class Mago(Personagem):
                 self.mana -= magia.custo
                 dano = magia.dano - alvo.defesa
                 if dano > 0:
-                    alvo.vida -= dano
+                    alvo.receber_dano(magia.dano)
                     print(f"{self.nome} usou magia em {alvo.nome} causando {dano} de dano!")
                 else:
                     print(f"{self.nome} usou magia em {alvo.nome}, mas não causou dano.")
