@@ -25,7 +25,7 @@ class Potion(Item):
 
     def usar(self, personagem):
         if self.quantidade > 0:
-            personagem.vida += 20  #  aumenta a vida do personagem
+            personagem.vida = min(personagem.vida_maxima, personagem.vida + 20)  #  aumenta a vida do personagem
             self.quantidade -= 1
             print(f"{personagem.nome} usou {self.nome} e recuperou 20 de vida!")
         else:
