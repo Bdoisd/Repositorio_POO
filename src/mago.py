@@ -11,7 +11,7 @@ class Mago(Personagem):
             defesa=5,
             
         )
-
+        magias = [Fogo(), Gelo(), Raio()]
         self.mana = 100
 
     def atacar(self, alvo):
