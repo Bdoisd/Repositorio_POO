@@ -42,3 +42,11 @@ class MagoInimigo(Inimigo):
             ataque=20,
             defesa=10
         )
+class Bossfinal(Inimigo):
+    def __init__(self):
+        super().__init__(
+            nome="Boss Final",
+            vida=150,
+            ataque=30,
+            defesa=15
+        )

@@ -25,9 +25,9 @@ def main():
         if not jogador.esta_vivo():
             print("Você foi derrotado!")
             break
-        print(f"voce foi derrotado pelo {inimigo.nome} e perdeu a batalha")
+            print(f"voce foi derrotado pelo {inimigo.nome} e perdeu a batalha")
         else:
-        print(f"Você derrotou {inimigo.nome} e venceu a batalha!")
+            print(f"Você derrotou {inimigo.nome} e venceu a batalha!")
 
     
 
