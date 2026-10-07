@@ -11,6 +11,11 @@ class Guerreiro(Personagem):
             defesa=15
         )
 
-    def atacar(self, alvo):
-        # TODO: implementar ataque do guerreiro
-        pass
+    def atacar(self, inimigo):
+        dano = self.ataque - inimigo.defesa
+        if dano > 0:
+            inimigo.receber_dano(dano)
+            print(f"{self.nome} atacou {inimigo.nome} causando {dano} de dano!")
+        else:
+            print(f"{self.nome} atacou {inimigo.nome}, mas não causou dano.")
+       
