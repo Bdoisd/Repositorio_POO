@@ -24,11 +24,11 @@ class Batalha:
             opcao = input("Escolha uma opção: ")
 
             if opcao == "1":
-                # TODO: jogador ataca inimigo
-                pass
+              self.jogador.atacar(self.inimigo)
+                
 
             elif opcao == "2":
-                # TODO: jogador usa item
+                
                 pass
 
             elif opcao == "3":
@@ -39,6 +39,37 @@ class Batalha:
                 print("Opção inválida.")
                 continue
 
-            # TODO: inimigo deve atacar depois do jogador
+            if self.inimigo.esta_vivo():
+                self.inimigo.atacar(self.jogador)
+                while self.jogador.esta_vivo() and self.inimigo.esta_vivo():
+                    print("\n--- STATUS ---")
+                    self.jogador.mostrar_status()
+                    self.inimigo.mostrar_status()
 
-        # TODO: verificar quem venceu
+                    print("\n--- AÇÕES ---")
+                    print("1 - Atacar")
+                    print("2 - Usar item")
+                    print("3 - Fugir")
+
+                    opcao = input("Escolha uma opção: ")
+
+                    if opcao == "1":
+                        self.jogador.atacar(self.inimigo)
+
+                    elif opcao == "2":
+                        pass
+
+                    elif opcao == "3":
+                        print("Você fugiu da batalha!")
+                        return
+
+                    else:
+                        print("Opção inválida.")
+                        continue
+
+                    if self.inimigo.esta_vivo():
+                        self.inimigo.atacar(self.jogador)
+        if self.jogador.esta_vivo():
+            print("\nParabéns! Você venceu a batalha!")
+        else:
+            print("\nVocê foi derrotado na batalha.")
