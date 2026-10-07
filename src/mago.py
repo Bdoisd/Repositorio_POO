@@ -45,6 +45,12 @@ class Inventario:
             self.itens.remove(item)
         else:
             print("Item não encontrado no inventário.")
+    def usar_item(self, item, personagem):
+        if item in self.itens:
+            item.usar(personagem)
+            self.remover_item(item)
+        else:
+            print("Item não encontrado no inventário.")
 
     def mostrar_inventario(self):
         if not self.itens:
