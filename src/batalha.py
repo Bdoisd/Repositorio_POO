@@ -1,4 +1,5 @@
 from mago import Gelo, Raio, Fogo, Mago
+from item import Potion, Poção_Mana,Inventario
 
 
 class Batalha:
@@ -6,7 +7,8 @@ class Batalha:
     def __init__(self, jogador, inimigo):
         self.jogador = jogador
         self.inimigo = inimigo
-
+        self.inventario = Inventario()  # Cria um inventário para o jogador
+        self.inventario.adicionar_item(Potion("Poção de Vida", 10, 3))  # Adiciona uma poção de vida ao inventário
     def iniciar(self):
 
         print("=" * 40)
@@ -32,8 +34,15 @@ class Batalha:
                 
 
             elif opcao == "2":
+                self.inventario.mostrar_inventario()
+            
+                item_escolhido = input("Escolha um item para usar: ")
                 
-                pass
+                item = next((i for i in self.inventario.itens if i.nome == item_escolhido), None)
+                if item:
+                    self.inventario.usar_item(item, self.jogador)
+                else:
+                    print("Item não encontrado.")
 
             elif opcao == "3":
                 print("Você fugiu da batalha!")
@@ -74,6 +83,7 @@ class Batalha:
                     print("1 - Atacar")
                     print("2 - Usar item")
                     print("3 - Fugir")
+                    print("4 - Usar magia (apenas para magos)")
 
                     opcao = input("Escolha uma opção: ")
 
@@ -86,6 +96,27 @@ class Batalha:
                     elif opcao == "3":
                         print("Você fugiu da batalha!")
                         return
+                    elif opcao == "4":
+                        if isinstance(self.jogador, Mago):
+                            print("Escolha a magia:")
+                            print("1 - Fogo")
+                            print("2 - Gelo")
+                            print("3 - Raio")
+                            escolha_magia = input("Digite o número da magia: ")
+
+                            if escolha_magia == "1":
+                                magia = Fogo()
+                            elif escolha_magia == "2":
+                                magia = Gelo()
+                            elif escolha_magia == "3":
+                                magia = Raio()
+                            else:
+                                print("Opção inválida.")
+                                continue
+
+                            self.jogador.usar_magia(magia, self.inimigo)
+                        else:
+                            print("Apenas magos podem usar magias.")
 
                     else:
                         print("Opção inválida.")

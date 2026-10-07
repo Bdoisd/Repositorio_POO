@@ -35,7 +35,7 @@ class Mago(Personagem):
                 print("O mago não possui mana suficiente.")
 class Inventario:
     def __init__(self):
-        self.itens = [Poção_Mana()]  # Inicializa com 4 poções
+        self.itens = [Poção_Mana(), Poção_Mana(), Poção_Mana(), Poção_Mana()]  # Inicializa com 4 poções
 
     def adicionar_item(self, item):
         self.itens.append(item)
