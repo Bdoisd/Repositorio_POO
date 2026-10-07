@@ -23,6 +23,7 @@ class Batalha:
             print("1 - Atacar")
             print("2 - Usar item")
             print("3 - Fugir")
+            print("4 - Usar magia (apenas para magos)")
 
             opcao = input("Escolha uma opção: ")
 
