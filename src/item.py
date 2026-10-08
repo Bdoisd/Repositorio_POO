@@ -13,10 +13,11 @@ class Potion(Item):
         super().__init__(nome, valor)
         self.quantidade = quantidade
 
-    def usar(self, personagem):
-        if self.quantidade > 0:
-            personagem.vida = min(personagem.vida_maxima, personagem.vida + 20)  #  aumenta a vida do personagem
-            self.quantidade -= 1
-            print(f"{personagem.nome} usou {self.nome} e recuperou 20 de vida!")
-        else:
-            print(f"{self.nome} não tem mais quantidade disponível.")
+    def usar_item(self, item, personagem):
+        if item in self.itens:
+        item.usar(personagem)
+
+    if hasattr(item, "quantidade") and item.quantidade <= 0:
+       self.remover_item(item)
+    else:
+     print("Item não encontrado no inventário.")
