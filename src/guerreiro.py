@@ -1,4 +1,4 @@
-from personagem import Personagem
+from src.personagem import Personagem
 
 
 class Guerreiro(Personagem):
@@ -12,5 +12,8 @@ class Guerreiro(Personagem):
         )
 
     def atacar(self, alvo):
-        # TODO: implementar ataque do guerreiro
-        pass
+        if alvo is None:
+            raise ValueError("É necessário informar um alvo.")
+
+        alvo.receber_dano(self.ataque)
+        return alvo.vida

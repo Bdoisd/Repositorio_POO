@@ -24,21 +24,29 @@ class Batalha:
             opcao = input("Escolha uma opção: ")
 
             if opcao == "1":
-                # TODO: jogador ataca inimigo
-                pass
-
+                self.jogador.atacar(self.inimigo)
             elif opcao == "2":
-                # TODO: implementar item
-                pass
-
+                if hasattr(self.jogador, "inventario"):
+                    item = self.jogador.inventario.itens[0] if self.jogador.inventario.itens else None
+                    if item is not None:
+                        self.jogador.inventario.usar_item(item, self.jogador)
+                    else:
+                        print("Seu inventário está vazio.")
+                else:
+                    print("Você não possui inventário.")
             elif opcao == "3":
                 print("Você fugiu da batalha!")
                 return
-
             else:
                 print("Opção inválida.")
                 continue
 
-            # TODO: inimigo deve atacar depois do jogador
+            if not self.inimigo.esta_vivo():
+                break
 
-        # TODO: verificar quem venceu
+            self.inimigo.atacar(self.jogador)
+
+        if self.jogador.esta_vivo():
+            print(f"{self.jogador.nome} venceu a batalha!")
+        else:
+            print(f"{self.inimigo.nome} venceu a batalha!")
